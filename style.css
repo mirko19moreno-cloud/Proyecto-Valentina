@@ -1,0 +1,584 @@
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    background:#050816;
+    color:white;
+}
+
+section{
+    width:100vw;
+    height:100vh;
+}
+
+/* INTRO */
+
+#intro{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    background:linear-gradient(180deg,#050816,#08122b);
+}
+
+#intro h1{
+
+    font-size:3rem;
+    text-align:center;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px #6ec8ff,
+    0 0 20px #6ec8ff,
+    0 0 40px #6ec8ff;
+}
+
+#intro p{
+
+    font-size:1.6rem;
+}
+
+#startBtn{
+
+    padding:18px 70px;
+
+    border:none;
+
+    border-radius:999px;
+
+    font-size:1.5rem;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:#ff4f95;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+
+    0 0 20px #ff4f95,
+    0 0 40px #ff4f95;
+
+}
+
+#startBtn:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+
+    0 0 25px #ff6cab,
+    0 0 50px #ff6cab;
+
+}
+
+/* PAGINA */
+
+#mainContent{
+
+    display:none;
+
+    position:relative;
+
+    background:#050816;
+
+    overflow:hidden;
+
+}
+
+/* CORAZON */
+
+.heart-container{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:5;
+
+}
+
+.heart-glow{
+
+    position:absolute;
+
+    width:230px;
+
+    height:230px;
+
+    border-radius:50%;
+
+    background:#42c8ff;
+
+    filter:blur(80px);
+
+    opacity:.35;
+
+}
+
+.heart-svg{
+
+    position:relative;
+
+    font-size:180px;
+
+    animation:heartbeat 2.2s ease-in-out infinite;
+
+    filter:
+
+    drop-shadow(0 0 12px #6ad6ff)
+
+    drop-shadow(0 0 25px #6ad6ff)
+
+    drop-shadow(0 0 45px #6ad6ff);
+
+}
+
+@keyframes heartbeat{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.08);}
+
+100%{transform:scale(1);}
+
+}
+/*=========================
+FRASES
+=========================*/
+
+#phrases{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+left:0;
+top:0;
+
+pointer-events:none;
+
+}
+
+.phrase{
+
+position:absolute;
+
+font-size:17px;
+
+font-weight:600;
+
+color:white;
+
+opacity:0;
+
+transition:1.2s;
+
+text-shadow:
+0 0 6px #ffffff,
+0 0 12px #6ad6ff;
+
+transform:translate(-50%,-50%);
+
+white-space:nowrap;
+
+}
+
+/*=========================
+PETALOS
+=========================*/
+
+#petals{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:2;
+
+}
+
+.petal{
+
+position:absolute;
+
+top:-40px;
+
+font-size:20px;
+
+animation:fall linear forwards;
+
+will-change:transform;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:
+translateY(-50px)
+rotate(0deg);
+
+opacity:0;
+
+}
+
+10%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/*=========================
+IPHONE
+=========================*/
+
+@media(max-width:430px){
+
+#intro h1{
+
+font-size:2.2rem;
+
+padding:0 20px;
+
+}
+
+#intro p{
+
+font-size:1.2rem;
+
+}
+
+#startBtn{
+
+font-size:1.2rem;
+
+padding:16px 45px;
+
+}
+
+.heart-svg{
+
+font-size:145px;
+
+}
+
+.heart-glow{
+
+width:180px;
+
+height:180px;
+
+}
+
+.phrase{
+
+font-size:13px;
+
+}
+
+}
+/*=========================
+CORAZÓN
+=========================*/
+
+#heartContainer{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:260px;
+
+height:260px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:5;
+
+}
+
+#heartCanvas{
+
+width:260px;
+
+height:260px;
+
+filter:
+drop-shadow(0 0 18px #5bd9ff)
+drop-shadow(0 0 35px #5bd9ff)
+drop-shadow(0 0 60px #5bd9ff);
+
+animation:heartBeat 2.3s ease-in-out infinite;
+
+}
+
+@keyframes heartBeat{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/*=========================
+FRASES
+=========================*/
+
+#phrases{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+}
+
+.phrase{
+
+position:absolute;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+opacity:0;
+
+transform:translate(-50%,-50%);
+
+transition:1s;
+
+text-shadow:
+
+0 0 10px #8fe6ff,
+
+0 0 18px #8fe6ff;
+
+white-space:nowrap;
+
+}
+
+/*=========================
+PÉTALOS
+=========================*/
+
+#petals{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:2;
+
+}
+
+.petal{
+
+position:absolute;
+
+top:-40px;
+
+font-size:20px;
+
+animation:fall linear forwards;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:
+translateY(-60px)
+rotate(0deg);
+
+opacity:0;
+
+}
+
+10%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/*=========================
+CARTA
+=========================*/
+
+#letterContainer{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(0,0,0,.55);
+
+z-index:30;
+
+}
+
+#letter{
+
+width:90%;
+
+max-width:600px;
+
+padding:28px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+
+0 0 35px rgba(91,217,255,.35);
+
+}
+
+#letter h2{
+
+text-align:center;
+
+margin-bottom:18px;
+
+font-size:2rem;
+
+color:#8fe6ff;
+
+}
+
+#letter p{
+
+font-size:17px;
+
+line-height:1.8;
+
+white-space:pre-line;
+
+}
+
+/*=========================
+MÓVIL
+=========================*/
+
+@media(max-width:430px){
+
+#heartContainer{
+
+width:210px;
+
+height:210px;
+
+}
+
+#heartCanvas{
+
+width:210px;
+
+height:210px;
+
+}
+
+.phrase{
+
+font-size:13px;
+
+}
+
+#letter{
+
+padding:22px;
+
+}
+
+#letter p{
+
+font-size:15px;
+
+}
+
+}
