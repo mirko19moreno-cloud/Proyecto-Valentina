@@ -1,0 +1,778 @@
+/* ================================= */
+/* RESET */
+/* ================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #03030a;
+    color: white;
+    overflow: hidden;
+}
+
+
+/* ================================= */
+/* PANTALLAS */
+/* ================================= */
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* ================================= */
+/* INTRO */
+/* ================================= */
+
+#intro {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(80, 20, 100, 0.25),
+            transparent 45%
+        ),
+        #03030a;
+}
+
+.intro-content {
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.heart-main {
+    font-size: 72px;
+    margin-bottom: 25px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.intro-content h1 {
+    font-size: clamp(32px, 9vw, 48px);
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    font-size: 19px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.intro-small {
+    font-size: 15px !important;
+    opacity: 0.6 !important;
+    margin-top: 10px;
+}
+
+
+/* ================================= */
+/* BOTONES */
+/* ================================= */
+
+.main-button {
+    margin-top: 35px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50px;
+
+    padding: 14px 30px;
+
+    background: rgba(255,255,255,0.08);
+    color: white;
+
+    font-size: 16px;
+    font-family: inherit;
+
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.main-button:active {
+    transform: scale(0.94);
+}
+
+.main-button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+
+/* ================================= */
+/* MÚSICA */
+/* ================================= */
+
+.music-button {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 1000;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 20px;
+
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+}
+
+
+/* ================================= */
+/* GUÍA */
+/* ================================= */
+
+#guide {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(90, 20, 130, 0.25),
+            transparent 55%
+        ),
+        #03030a;
+}
+
+.guide-content {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.guide-star {
+    font-size: 80px;
+
+    color: #fff7a5;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #fff2a0,
+        0 0 50px #ffd700;
+
+    animation: starPulse 1.5s infinite;
+
+    margin-bottom: 25px;
+}
+
+.guide-content h2 {
+    font-size: 30px;
+    font-weight: normal;
+    margin-bottom: 18px;
+}
+
+.guide-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+
+/* ================================= */
+/* UNIVERSO */
+/* ================================= */
+
+#universe {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(40, 20, 80, 0.25),
+            transparent 50%
+        ),
+        #020208;
+}
+
+#universe::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    opacity: 0.25;
+}
+
+
+/* ================================= */
+/* TÍTULO UNIVERSO */
+/* ================================= */
+
+.universe-title {
+    position: absolute;
+
+    top: 90px;
+
+    width: 90%;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+.universe-title p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.universe-title span {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 14px;
+
+    opacity: 0.55;
+}
+
+
+/* ================================= */
+/* ESTRELLAS */
+/* ================================= */
+
+.star {
+    position: absolute;
+
+    border: none;
+
+    background: transparent;
+
+    color: #fff7b0;
+
+    font-size: 32px;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px #ffe96b,
+        0 0 35px #ffd700;
+
+    z-index: 10;
+
+    cursor: pointer;
+
+    animation:
+        starFloat 3s ease-in-out infinite,
+        starGlow 2s ease-in-out infinite;
+}
+
+.star:active {
+    transform: scale(0.7);
+}
+
+
+/* POSICIONES */
+
+.star-1 {
+    top: 27%;
+    left: 18%;
+    animation-delay: 0s;
+}
+
+.star-2 {
+    top: 36%;
+    right: 18%;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    top: 53%;
+    left: 43%;
+    animation-delay: 1s;
+}
+
+.star-4 {
+    top: 67%;
+    left: 16%;
+    animation-delay: 1.5s;
+}
+
+.star-5 {
+    top: 73%;
+    right: 17%;
+    animation-delay: 2s;
+}
+
+
+/* ================================= */
+/* ESTRELLA DESCUBIERTA */
+/* ================================= */
+
+.star.discovered {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px #bca7ff,
+        0 0 40px #9c7cff;
+
+    opacity: 0.45;
+}
+
+
+/* ================================= */
+/* MODAL */
+/* ================================= */
+
+.message-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(0,0,0,0.72);
+
+    backdrop-filter: blur(8px);
+
+    transition: opacity 0.3s ease;
+}
+
+.message-modal.hidden {
+    display: none;
+}
+
+.message-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 380px;
+
+    padding: 38px 28px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(40,30,60,0.95),
+            rgba(10,10,20,0.97)
+        );
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.7);
+
+    text-align: center;
+
+    animation: cardAppear 0.35s ease;
+}
+
+.close-button {
+    position: absolute;
+
+    top: 12px;
+    right: 16px;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    opacity: 0.65;
+}
+
+.modal-star {
+    font-size: 48px;
+
+    color: #fff0a0;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 15px #ffd700;
+}
+
+.message-card h2 {
+    font-size: 27px;
+
+    font-weight: normal;
+
+    margin-bottom: 20px;
+}
+
+.message-card p {
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+
+/* ================================= */
+/* PROGRESO */
+/* ================================= */
+
+.progress-container {
+    position: absolute;
+
+    bottom: 28px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 70%;
+
+    max-width: 300px;
+
+    text-align: center;
+
+    z-index: 20;
+}
+
+#progressText {
+    font-size: 13px;
+
+    opacity: 0.6;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 3px;
+
+    margin-top: 8px;
+
+    background: rgba(255,255,255,0.12);
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    background: #fff1a3;
+
+    box-shadow:
+        0 0 10px #ffe56b;
+
+    transition: width 0.5s ease;
+}
+
+
+/* ================================= */
+/* FINAL */
+/* ================================= */
+
+#finish {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100, 20, 100, 0.25),
+            transparent 55%
+        ),
+        #03030a;
+}
+
+.finish-content {
+    width: 90%;
+    max-width: 420px;
+
+    text-align: center;
+}
+
+.final-heart {
+    font-size: 70px;
+
+    animation: heartbeat 1.5s infinite;
+
+    margin-bottom: 25px;
+}
+
+.finish-content h2 {
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 15px;
+}
+
+.finish-content p {
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    opacity: 0.8;
+}
+
+
+/* ================================= */
+/* CARTA */
+/* ================================= */
+
+#letter {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(70, 20, 80, 0.18),
+            transparent 60%
+        ),
+        #05030a;
+
+    overflow-y: auto;
+
+    padding: 35px 20px;
+}
+
+.letter-container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding: 30px 0;
+}
+
+.letter-paper {
+    width: 100%;
+    max-width: 430px;
+
+    min-height: 75vh;
+
+    padding: 40px 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.03)
+        );
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.6);
+
+    text-align: center;
+}
+
+.letter-decoration {
+    font-size: 35px;
+
+    color: #ffdce8;
+
+    margin-bottom: 15px;
+}
+
+.letter-paper h2 {
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 30px;
+}
+
+.letter-text {
+    text-align: left;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+
+    min-height: 250px;
+}
+
+.signature {
+    margin-top: 35px;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    text-align: right;
+
+    color: #ffdce8;
+}
+
+.signature.hidden {
+    display: none;
+}
+
+
+/* ================================= */
+/* ANIMACIONES */
+/* ================================= */
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.12);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+}
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+@keyframes starGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+@keyframes starFloat {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -8px;
+    }
+
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+/* ================================= */
+/* IPHONE */
+/* ================================= */
+
+@media (max-width: 430px) {
+
+    .intro-content h1 {
+        font-size: 34px;
+    }
+
+    .guide-content h2 {
+        font-size: 27px;
+    }
+
+    .star {
+        font-size: 29px;
+    }
+
+    .message-card {
+        padding: 35px 22px;
+    }
+
+    .message-card p {
+        font-size: 17px;
+    }
+
+}
+
+
+/* ================================= */
+/* EVITAR SELECCIÓN */
+/* ================================= */
+
+button,
+.star {
+    user-select: none;
+    -webkit-user-select: none;
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Para Valentina ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- MÚSICA -->
+    <!-- ========================= -->
+
+    <audio id="backgroundMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicButton" class="music-button">
+        ♪
+    </button>
+
+
+    <!-- ========================= -->
+    <!-- PANTALLA DE INICIO -->
+    <!-- ========================= -->
+
+    <section id="intro" class="screen active">
+
+        <div class="intro-content">
+
+            <div class="heart-main">❤️</div>
+
+            <h1>Para ti, Valentina</h1>
+
+            <p>
+                Hice algo pequeño para ti.
+            </p>
+
+            <p class="intro-small">
+                Solo quiero que lo veas hasta el final.
+            </p>
+
+            <button id="startBtn" class="main-button">
+                Comenzar
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- GUÍA -->
+    <!-- ========================= -->
+
+    <section id="guide" class="screen">
+
+        <div class="guide-content">
+
+            <div class="guide-star">★</div>
+
+            <h2>Hay algo para descubrir...</h2>
+
+            <p>
+                Hay cinco estrellas escondidas.
+            </p>
+
+            <p>
+                Toca cada una para descubrir
+                lo que quiero decirte.
+            </p>
+
+            <button id="guideBtn" class="main-button">
+                Descubrir
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- UNIVERSO -->
+    <!-- ========================= -->
+
+    <section id="universe" class="screen">
+
+        <div class="universe-title">
+
+            <p>
+                Hay cinco cosas que quería decirte...
+            </p>
+
+            <span>
+                Encuéntralas.
+            </span>
+
+        </div>
+
+
+        <!-- ESTRELLA 1 -->
+
+        <button
+            class="star star-1"
+            data-message="gracias"
+            aria-label="Estrella uno">
+            ★
+        </button>
+
+
+        <!-- ESTRELLA 2 -->
+
+        <button
+            class="star star-2"
+            data-message="admiracion"
+            aria-label="Estrella dos">
+            ★
+        </button>
+
+
+        <!-- ESTRELLA 3 -->
+
+        <button
+            class="star star-3"
+            data-message="recuerdo"
+            aria-label="Estrella tres">
+            ★
+        </button>
+
+
+        <!-- ESTRELLA 4 -->
+
+        <button
+            class="star star-4"
+            data-message="deseo"
+            aria-label="Estrella cuatro">
+            ★
+        </button>
+
+
+        <!-- ESTRELLA 5 -->
+
+        <button
+            class="star star-5"
+            data-message="futuro"
+            aria-label="Estrella cinco">
+            ★
+        </button>
+
+
+        <!-- MENSAJE CENTRAL -->
+
+        <div id="messageModal" class="message-modal hidden">
+
+            <div class="message-card">
+
+                <button id="closeModal" class="close-button">
+                    ×
+                </button>
+
+                <div id="modalStar" class="modal-star">
+                    ★
+                </div>
+
+                <h2 id="modalTitle">
+                    Título
+                </h2>
+
+                <p id="modalText">
+                    Mensaje
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESO -->
+
+        <div class="progress-container">
+
+            <span id="progressText">
+                0 / 5
+            </span>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PANTALLA FINAL -->
+    <!-- ========================= -->
+
+    <section id="finish" class="screen">
+
+        <div class="finish-content">
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+            <h2>
+                Hay algo más...
+            </h2>
+
+            <p>
+                Y esto es probablemente lo más importante.
+            </p>
+
+            <button id="finishBtn" class="main-button">
+                Continuar
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- CARTA -->
+    <!-- ========================= -->
+
+    <section id="letter" class="screen">
+
+        <div class="letter-container">
+
+            <div class="letter-paper">
+
+                <div class="letter-decoration">
+                    ♡
+                </div>
+
+                <h2>
+                    Valentina
+                </h2>
+
+                <div
+                    id="letterText"
+                    class="letter-text">
+                </div>
+
+                <div
+                    id="signature"
+                    class="signature hidden">
+                    Con cariño,<br>
+                    Mirko ❤️
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
