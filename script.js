@@ -418,9 +418,6 @@ A veces siento muchísimo y no siempre sé cómo expresarlo sin decir demasiado.
 
 Me alegra cada conversación, cada risa, cada momento que hemos compartido, porque de alguna manera consiguen que mis dias sean mejores.
 
-No hice esto para pedirte nada.
-
-Tampoco para apresurar lo que estamos viviendo.
 
 Solo quería regalarte un pequeño momento y recordarte que, incluso cuando las cosas no son perfectas, hay alguien aquí que valora muchísimo tenerte en su vida.
 
