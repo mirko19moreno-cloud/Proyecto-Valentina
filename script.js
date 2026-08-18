@@ -412,13 +412,11 @@ const signature =
 
 const finalLetter =
 
-`Valentina,
-
-No sé si alguna vez te he dicho todo esto de la manera correcta.
+`No sé si alguna vez te he dicho todo esto de la manera correcta.
 
 A veces siento muchísimo y no siempre sé cómo expresarlo sin decir demasiado. Pero hay algo que sí tengo claro: me alegra haberte conocido.
 
-Me alegra cada conversación, cada risa, cada momento que hemos compartido y hasta esas pequeñas cosas que probablemente para ti no significan demasiado, pero que yo recuerdo.
+Me alegra cada conversación, cada risa, cada momento que hemos compartido, porque de alguna manera consiguen que mis dias sean mejores.
 
 No hice esto para pedirte nada.
 
@@ -434,10 +432,7 @@ A nuestro ritmo.
 
 Y quién sabe...
 
-quizás algún día podamos estar viendo esto juntos, sentados uno al lado del otro, y reírnos de lo cursi que era.
-
-Con cariño,
-Mirko ❤️`;
+quizás algún día podamos estar viendo esto juntos, sentados uno al lado del otro, y reírnos de lo cursi que era.`;
 
 
 /* ================================= */
