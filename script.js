@@ -153,7 +153,7 @@ const messages = {
         title: "Admiración",
 
         text:
-            "Hay muchas cosas de ti que admiro, pero algunas de ellas son lo valiente que eres y el corazón tan bonito que tienes."
+            "Hay muchas cosas que admiro de ti, pero algunas de ellas son lo valiente que eres y el corazón tan bonito que tienes."
 
     },
 
