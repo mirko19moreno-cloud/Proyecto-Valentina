@@ -1,0 +1,645 @@
+/* =====================================================
+   CAMBIO DE PANTALLAS
+===================================================== */
+
+const screens = {
+
+    intro: document.getElementById("intro"),
+
+    guide: document.getElementById("guide"),
+
+    universe: document.getElementById("universe"),
+
+    letter: document.getElementById("letter")
+
+};
+
+
+function showScreen(screenName) {
+
+    Object.values(screens).forEach(screen => {
+
+        screen.classList.remove("active");
+
+    });
+
+
+    screens[screenName].classList.add("active");
+
+}
+
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+let musicPlaying = false;
+
+
+/*
+   IMPORTANTE:
+
+   En iPhone/Safari la música no puede comenzar
+   automáticamente sin interacción del usuario.
+
+   Por eso comienza cuando Valentina pulsa
+   el botón "Abrir".
+*/
+
+
+function startMusic() {
+
+    if (!backgroundMusic) return;
+
+
+    backgroundMusic.volume = 0.35;
+
+
+    const playPromise =
+        backgroundMusic.play();
+
+
+    if (playPromise !== undefined) {
+
+        playPromise
+            .then(() => {
+
+                musicPlaying = true;
+
+                musicButton.textContent = "♫";
+
+            })
+            .catch(() => {
+
+                console.log(
+                    "Safari bloqueó la reproducción automática."
+                );
+
+            });
+
+    }
+
+}
+
+
+
+/* =====================================================
+   BOTÓN DE MÚSICA
+===================================================== */
+
+musicButton.addEventListener(
+    "click",
+    () => {
+
+        if (!backgroundMusic) return;
+
+
+        if (backgroundMusic.paused) {
+
+            backgroundMusic.play()
+                .then(() => {
+
+                    musicPlaying = true;
+
+                    musicButton.textContent = "♫";
+
+                })
+                .catch(() => {
+
+                    console.log(
+                        "No se pudo reproducir la música."
+                    );
+
+                });
+
+        }
+
+        else {
+
+            backgroundMusic.pause();
+
+            musicPlaying = false;
+
+            musicButton.textContent = "🔇";
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   BOTÓN "ABRIR"
+===================================================== */
+
+const startButton =
+    document.getElementById("startBtn");
+
+
+startButton.addEventListener(
+    "click",
+    () => {
+
+        /*
+           Este toque permite iniciar la música
+           en el iPhone.
+        */
+
+        startMusic();
+
+
+        /*
+           Pasamos a la pantalla de guía.
+        */
+
+        showScreen("guide");
+
+    }
+);
+
+
+
+/* =====================================================
+   BOTÓN "ENTENDIDO"
+===================================================== */
+
+const guideButton =
+    document.getElementById("guideBtn");
+
+
+guideButton.addEventListener(
+    "click",
+    () => {
+
+        showScreen("universe");
+
+    }
+);
+
+
+
+/* =====================================================
+   FRASES DE LAS ESTRELLAS
+===================================================== */
+
+const messages = {
+
+
+    gracias: {
+
+        title: "Gracias",
+
+        text:
+            "Gracias por haber llegado a mi vida de una manera que jamás imaginé."
+
+    },
+
+
+    admiracion: {
+
+        title: "Admiración",
+
+        text:
+            "Hay muchas cosas de ti que admiro, pero algunas de ellas son lo valiente que eres y el corazón tan bonito que tienes."
+
+    },
+
+
+    recuerdo: {
+
+        title: "Recuerdo",
+
+        text:
+            "Hay momentos contigo que pueden parecer normales, pero recordar cuando nos reíamos y tú bailabas siempre será un momento especial para mí."
+
+    },
+
+
+    deseo: {
+
+        title: "Deseo",
+
+        text:
+            "Seguir construyendo juntos algo bonito, sincero y único, sin prisas y a nuestro ritmo."
+
+    },
+
+
+    futuro: {
+
+        title: "Futuro",
+
+        text:
+            "Créeme que hablar contigo de ser padres en un futuro nunca me dio miedo. Ahí me di cuenta de que contigo no tengo miedo de imaginar un futuro, porque me has demostrado ser una persona muy valiosa para mí."
+
+    }
+
+};
+
+
+
+/* =====================================================
+   ELEMENTOS DEL MODAL
+===================================================== */
+
+const stars =
+    document.querySelectorAll(".star");
+
+
+const messageModal =
+    document.getElementById("messageModal");
+
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+
+const modalText =
+    document.getElementById("modalText");
+
+
+const closeModal =
+    document.getElementById("closeModal");
+
+
+const progressText =
+    document.getElementById("progressText");
+
+
+const finish =
+    document.getElementById("finish");
+
+
+const letterButton =
+    document.getElementById("letterBtn");
+
+
+
+/* =====================================================
+   ESTRELLAS DESCUBIERTAS
+===================================================== */
+
+let discoveredStars =
+    new Set();
+
+
+
+/* =====================================================
+   ABRIR UNA ESTRELLA
+===================================================== */
+
+stars.forEach(star => {
+
+
+    star.addEventListener(
+        "click",
+        () => {
+
+
+            const key =
+                star.dataset.key;
+
+
+            const message =
+                messages[key];
+
+
+            if (!message) return;
+
+
+            /*
+               Guardamos que esta estrella
+               ya fue descubierta.
+            */
+
+            discoveredStars.add(key);
+
+
+            /*
+               Cambiamos visualmente
+               la estrella.
+            */
+
+            star.classList.add(
+                "discovered"
+            );
+
+
+            /*
+               Ponemos el título.
+            */
+
+            modalTitle.textContent =
+                message.title;
+
+
+            /*
+               Ponemos la frase.
+            */
+
+            modalText.textContent =
+                message.text;
+
+
+            /*
+               Abrimos el modal.
+            */
+
+            messageModal.classList.remove(
+                "hidden"
+            );
+
+
+            /*
+               Actualizamos contador.
+            */
+
+            progressText.textContent =
+                `${discoveredStars.size} de 5 descubiertas`;
+
+        }
+    );
+
+});
+
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+function closeMessage() {
+
+
+    messageModal.classList.add(
+        "hidden"
+    );
+
+
+    /*
+       Si ya descubrió las cinco,
+       mostramos la pantalla final.
+    */
+
+    if (
+        discoveredStars.size ===
+        stars.length
+    ) {
+
+
+        setTimeout(
+            () => {
+
+                finish.classList.remove(
+                    "hidden"
+                );
+
+            },
+            450
+        );
+
+    }
+
+}
+
+
+closeModal.addEventListener(
+    "click",
+    closeMessage
+);
+
+
+
+/*
+   También puede cerrar tocando
+   fuera de la tarjeta.
+*/
+
+messageModal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            messageModal
+        ) {
+
+            closeMessage();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   CARTA FINAL
+===================================================== */
+
+const letterText =
+    `Valentina,
+
+No sé si alguna vez te he dicho todo esto de la manera correcta.
+
+A veces siento muchísimo y no siempre sé cómo expresarlo sin decir demasiado.
+
+Pero hay algo que sí tengo claro: me alegra haberte conocido.
+
+Me alegra cada conversación, cada risa, cada momento que hemos compartido y hasta esas pequeñas cosas que probablemente para ti no significan demasiado, pero que yo recuerdo.
+
+No hice esto para pedirte nada.
+
+Tampoco para apresurar lo que estamos viviendo.
+
+Solo quería regalarte un pequeño momento y recordarte que, incluso cuando las cosas no son perfectas, hay alguien aquí que sigue valorando muchísimo tenerte en su vida.
+
+Y si algún día volvemos a mirar atrás y recordamos esta etapa, espero que podamos sonreír pensando en todo lo que fuimos construyendo poco a poco.
+
+Sin prisa. Sin presión. A nuestro ritmo.
+
+Y quién sabe...
+
+quizás algún día podamos estar viendo esto juntos, sentados uno al lado del otro, y reírnos de lo cursi que era.
+
+Con cariño,`;
+
+
+
+/* =====================================================
+   EFECTO DE ESCRITURA
+===================================================== */
+
+let letterStarted = false;
+
+
+function typeLetter() {
+
+
+    if (letterStarted) return;
+
+
+    letterStarted = true;
+
+
+    const textElement =
+        document.getElementById(
+            "letterText"
+        );
+
+
+    const signature =
+        document.getElementById(
+            "signature"
+        );
+
+
+    let character =
+        0;
+
+
+    function writeCharacter() {
+
+
+        if (
+            character <
+            letterText.length
+        ) {
+
+
+            textElement.textContent +=
+                letterText[character];
+
+
+            character++;
+
+
+            setTimeout(
+                writeCharacter,
+                24
+            );
+
+        }
+
+        else {
+
+
+            /*
+               Cuando termina la carta,
+               aparece la firma.
+            */
+
+            setTimeout(
+                () => {
+
+                    signature.classList.remove(
+                        "hidden"
+                    );
+
+                },
+                500
+            );
+
+        }
+
+    }
+
+
+    writeCharacter();
+
+}
+
+
+
+/* =====================================================
+   BOTÓN "HAY ALGO MÁS..."
+===================================================== */
+
+letterButton.addEventListener(
+    "click",
+    () => {
+
+
+        /*
+           Cerramos la pantalla
+           de final.
+        */
+
+        finish.classList.add(
+            "hidden"
+        );
+
+
+        /*
+           Abrimos la carta.
+        */
+
+        showScreen("letter");
+
+
+        /*
+           Comenzamos la escritura.
+        */
+
+        typeLetter();
+
+    }
+);
+
+
+
+/* =====================================================
+   PREVENIR ZOOM ACCIDENTAL EN IPHONE
+===================================================== */
+
+document.addEventListener(
+    "gesturestart",
+    event => {
+
+        event.preventDefault();
+
+    }
+);
+
+
+
+/* =====================================================
+   PREVENIR DOBLE TOQUE DE ZOOM
+===================================================== */
+
+let lastTouchEnd = 0;
+
+
+document.addEventListener(
+    "touchend",
+    event => {
+
+
+        const now =
+            Date.now();
+
+
+        if (
+            now - lastTouchEnd <= 300
+        ) {
+
+            event.preventDefault();
+
+        }
+
+
+        lastTouchEnd =
+            now;
+
+    },
+    false
+);
